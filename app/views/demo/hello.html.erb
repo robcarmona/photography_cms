@@ -1,0 +1,21 @@
+<h1>Demo#hello</h1>
+<p>Hello World!</p>
+
+
+
+ID: <%= @id %><br/>
+Next page: <%= @page.to_i + 1 %> <br/>
+
+
+<% target = "world" %>
+<% "Hello #{target}" %>
+
+<% @array.each do |n| %>
+	<%= n %><br/>
+<% end %>
+
+
+<%= link_to('Go back to hellow page',{:action=>'hello', :id=>20,:page=>5}) %>
+
+<hr/>
+<%= params.inspect %>
