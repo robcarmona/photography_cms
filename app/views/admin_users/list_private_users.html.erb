@@ -1,0 +1,33 @@
+<% @page_title = "Private Users List" %>
+
+<%= link_to("<< Back to Menu", {:controller => 'access', :action => 'menu'}, :class => 'back-link') %>
+
+<div class="section list">
+<div class="user list">
+  <h2>Private Users</h2>
+
+  <%= link_to('Add New Private User', {:action => 'new_private_user'}, :class => 'action new') %>
+
+  <div><%= pluralize(@private_users.size, 'private user') %> found</div>
+  
+  <table class="listing" summary="Private users list">
+    <tr>
+      <th>Username</th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Actions</th>
+    </tr>
+    <% @private_users.each do |private_user| %>
+    <tr class="<%= cycle('odd', 'even') %>">
+      <td><%= private_user.username %></td>
+      <td><%= private_user.name %></td>
+      <td><%= mail_to(private_user.email) %></td>
+      <td class="actions">
+        <%= link_to('Edit', {:action => 'edit', :id => private_user.id}, :class => 'action edit') %>
+        <%= link_to('Delete', {:action => 'delete', :id => private_user.id}, :class => 'action delete') %>
+      </td>
+    </tr>
+    <% end %>
+  </table>
+
+</div>

@@ -6,6 +6,8 @@
 	<ul>
 		<li><%= link_to("Manage Content", :controller => 'subjects')%></li>
 		<li><%= link_to("Manage Admin Users", :controller => 'admin_users')%></li>
+		<li><%= link_to("Manage Private Users", :controller => 'admin_users', :action => 'list_private_users')%></li>
+		<li><%= link_to("Manage Public Pictures", :controller => 'public_pictures', :action => 'list_private_users')%></li>
 		<li><%= link_to("Logout", :action => 'logout')%></li>
 	
 	</ul>

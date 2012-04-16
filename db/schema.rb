@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110612021954) do
+ActiveRecord::Schema.define(:version => 20120415204803) do
 
   create_table "admin_users", :force => true do |t|
     t.string   "first_name",      :limit => 25
@@ -44,6 +44,51 @@ ActiveRecord::Schema.define(:version => 20110612021954) do
 
   add_index "pages", ["permalink"], :name => "index_pages_on_permalink"
   add_index "pages", ["subject_id"], :name => "index_pages_on_subject_id"
+
+  create_table "private_pictures", :force => true do |t|
+    t.integer  "private_user_id"
+    t.string   "name"
+    t.string   "summary"
+    t.text     "description"
+    t.string   "location"
+    t.string   "permalink"
+    t.integer  "position"
+    t.boolean  "visible",         :default => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "private_pictures", ["permalink"], :name => "index_private_pictures_on_permalink"
+  add_index "private_pictures", ["private_user_id"], :name => "index_private_pictures_on_private_user_id"
+
+  create_table "private_users", :force => true do |t|
+    t.string   "username"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "email",                         :default => "", :null => false
+    t.string   "hashed_password"
+    t.string   "salt",            :limit => 40
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "private_users", ["username"], :name => "index_private_users_on_username"
+
+  create_table "public_pictures", :force => true do |t|
+    t.string   "name"
+    t.string   "summary"
+    t.text     "description"
+    t.string   "tag"
+    t.string   "location"
+    t.string   "permalink"
+    t.integer  "position"
+    t.boolean  "visible",     :default => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "public_pictures", ["permalink"], :name => "index_public_pictures_on_permalink"
+  add_index "public_pictures", ["tag"], :name => "index_public_pictures_on_tag"
 
   create_table "section_edits", :force => true do |t|
     t.integer  "admin_user_id"

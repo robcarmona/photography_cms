@@ -12,9 +12,17 @@ class AdminUsersController < ApplicationController
   def list
     @admin_users = AdminUser.sorted
   end
+  
+  def list_private_users
+    @private_users = PrivateUser.sorted
+  end
 
   def new
     @admin_user = AdminUser.new
+  end
+  
+  def new_private_user
+    @private_user = PrivateUser.new
   end
   
   def create
@@ -24,6 +32,16 @@ class AdminUsersController < ApplicationController
       redirect_to(:action => 'list')
     else
       render("new")
+    end
+  end
+  
+    def create_private_user
+    @private_user = PrivateUser.new(params[:private_user])
+    if @private_user.save
+      flash[:notice] = 'Private user created.'
+      redirect_to(:action => 'list_private_users')
+    else
+      render("new_private_user")
     end
   end
 
