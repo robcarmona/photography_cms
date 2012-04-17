@@ -1,0 +1,16 @@
+<% @page_title = "Edit Admin User: #{@public_picture.name}" -%>
+
+<%= link_to("<< Back to List", {:action => 'list'}, :class => 'back-link') %>
+
+<div class="user edit">
+  <h2>Edit Public Picture</h2>
+
+  <%= form_for(:public_picture, :url => {:action => 'update', :id => @public_picture.id}) do |f| %>
+    
+  	<%= render(:partial => 'form', :locals => {:f => f} ) %>
+	
+  	<div class="form-buttons">
+  	  <%= submit_tag('Update Public Picture') %>
+    </div>
+  <% end %>
+</div>

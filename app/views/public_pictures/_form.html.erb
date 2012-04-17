@@ -1,0 +1,28 @@
+<%= error_messages_for(@public_pictures) %>
+
+<table summary="Picture form fields">
+  <tr>
+    <th><%= f.label(:name) %></th>
+    <td><%= f.text_field(:name) %></td>
+  </tr>
+  <tr>
+    <th><%= f.label(:tag) %></th>
+    <td><%= f.text_field(:tag) %></td>
+  </tr>
+  <tr>
+    <th><%= f.label(:location) %></th>
+    <td><%= f.text_field(:location) %></td>
+  </tr>
+  <tr>
+    <th><%= f.label(:visible) %></th>
+    <td><%= f.text_field(:visible) %></td>
+  </tr>
+  <tr>
+    <th><%= f.label(:summary) %></th>
+    <td><%= f.text_field(:summary) %></td>
+  </tr>
+  <tr>
+    <th><%= f.label(:description) %></th>
+    <td><%= f.password_field(:description) %></td>
+  </tr>
+</table>

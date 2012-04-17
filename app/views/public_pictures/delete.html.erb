@@ -1,0 +1,19 @@
+<% @page_title = "Delete Admin User: #{@public_picture.name}" %>
+
+<%= link_to("<< Back to List", {:action => 'list'}, :class => 'back-link') %>
+
+<div class="user delete">
+  <h2>Delete Public Picture</h2>
+  
+  <%= form_for(:public_picture, :url => {:action => 'destroy', :id => @public_picture.id}) do |f| -%>
+
+    <p>Are you sure you want to permanently delete this public picture?</p>
+  
+    <p class="reference-name"><%= @public_picture.name %></p>
+  
+    <div class="form-buttons">
+      <%= submit_tag("Delete Public Picture") %>
+    </div>
+    
+  <% end %>
+</div>
