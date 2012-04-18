@@ -6,7 +6,7 @@
   <h2>Edit Public Picture</h2>
 
   <%= form_for(:public_picture, :url => {:action => 'update', :id => @public_picture.id}) do |f| %>
-    <%= image_tag("#{@public_picture.location}", :size => "310x310", :position => "center", :class => "edit_picture")%>
+    <%= image_tag("#{@public_picture.location}", :size => "310x310", :class => "edit_picture")%>
 	<br>
   	<%= render(:partial => 'form', :locals => {:f => f} ) %>
 	
