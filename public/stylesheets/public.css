@@ -23,7 +23,10 @@ a:hover {}
 
 .clear { clear: both; }
 .center { text-align: center; }
-
+.edit_picture {
+	display: block;
+    margin-left: auto;
+    margin-right: auto }
 /* Structure */
 #header { height: 4em; padding-top: 1em; text-align: center; 
   background: #4E4A2C; color: #D7CE65; }
