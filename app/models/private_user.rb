@@ -61,7 +61,7 @@ class PrivateUser < ActiveRecord::Base
     # Whenever :password has a value hashing is needed
     unless password.blank?
       # always use "self" when assigning values
-      self.salt = AdminUser.make_salt(username) if salt.blank?
+      self.salt = PrivateUser.make_salt(username) if salt.blank?
       self.hashed_password = PrivateUser.hash_with_salt(password, salt)
     end
   end

@@ -35,7 +35,7 @@ class AdminUsersController < ApplicationController
     end
   end
   
-    def create_private_user
+  def create_private_user
     @private_user = PrivateUser.new(params[:private_user])
     if @private_user.save
       flash[:notice] = 'Private user created.'
@@ -49,6 +49,10 @@ class AdminUsersController < ApplicationController
     @admin_user = AdminUser.find(params[:id])
   end
   
+  def edit_private_user
+    @private_user = PrivateUser.find(params[:id])
+  end
+  
   def update
     @admin_user = AdminUser.find(params[:id])
     if @admin_user.update_attributes(params[:admin_user])
@@ -58,15 +62,35 @@ class AdminUsersController < ApplicationController
       render("edit")
     end
   end
+  
+  def update_private_user
+    @private_user = PrivateUser.find(params[:id])
+    if @private_user.update_attributes(params[:private_user])
+      flash[:notice] = 'Private user updated.'
+      redirect_to(:action => 'list_private_users')
+    else
+      render("edit_private_user")
+    end
+  end
 
   def delete
     @admin_user = AdminUser.find(params[:id])
+  end
+  
+  def delete_private_user
+    @private_user = PrivateUser.find(params[:id])
   end
 
   def destroy
     AdminUser.find(params[:id]).destroy
     flash[:notice] = "Admin user destroyed."
     redirect_to(:action => 'list')
+  end
+  
+  def destroy_private_user
+    PrivateUser.find(params[:id]).destroy
+    flash[:notice] = "Private user destroyed."
+    redirect_to(:action => 'list_private_users')
   end
 
 end

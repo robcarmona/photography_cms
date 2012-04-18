@@ -1,0 +1,16 @@
+<% @page_title = "Edit Private User: #{@private_user.name}" -%>
+
+<%= link_to("<< Back to List", {:action => 'list_private_users'}, :class => 'back-link') %>
+
+<div class="user edit">
+  <h2>Edit Private User</h2>
+
+  <%= form_for(:private_user, :url => {:action => 'update_private_user', :id => @private_user.id}) do |f| %>
+    
+  	<%= render(:partial => 'form', :locals => {:f => f} ) %>
+	
+  	<div class="form-buttons">
+  	  <%= submit_tag('Update Private User') %>
+    </div>
+  <% end %>
+</div>
