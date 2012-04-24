@@ -1,9 +1,13 @@
 SimpleCms::Application.routes.draw do
 
   root :to => "public#index"
-  
+  match 'private', :to => 'access#login_private'
   match 'admin', :to => 'access#menu'
   match 'show/:id', :to => 'public#show'
+  match 'index', :to => "public#index"
+  match 'gallery', :to => "public#gallery"
+  match 'contact', :to => "public#contact"
+  match 'about', :to => "public#about"
   
   #get "demo/index"
 

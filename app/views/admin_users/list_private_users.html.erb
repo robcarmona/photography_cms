@@ -6,7 +6,7 @@
 <div class="user list">
   <h2>Private Users</h2>
 
-  <%= link_to('Add New Private User', {:action => 'new_private_user'}, :class => 'action new') %>
+  <%= link_to('Add New Private User', {:action => 'new_private_user'}, :class => 'action new', :private_user_id => params[:private_user_id]) %>
 
   <div><%= pluralize(@private_users.size, 'private user') %> found</div>
   
@@ -25,6 +25,7 @@
       <td class="actions">
         <%= link_to('Edit', {:action => 'edit_private_user', :id => private_user.id}, :class => 'action edit') %>
         <%= link_to('Delete', {:action => 'delete_private_user', :id => private_user.id}, :class => 'action delete') %>
+		<%= link_to('Manage Pictures', {:action => 'list_private_pictures', :private_user_id => private_user.id}, :class => 'action list') %>
       </td>
     </tr>
     <% end %>

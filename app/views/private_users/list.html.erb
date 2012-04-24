@@ -1,0 +1,26 @@
+<% @page_title = "Admin Users List" %>
+
+<%= link_to("<< Back to Menu", {:controller => 'access', :action => 'menu_private'}, :class => 'back-link') %>
+
+<div class="section list">
+<div class="user list">
+  <h2>Private Pictures</h2>
+
+  <div><%= pluralize(@private_pictures.size, 'public picture') %> found</div>
+  
+  <table class="listing" summary="private pictures list">
+    <tr>
+      <th>Picture</th>
+      <th>Actions</th>
+    </tr>
+    <% @private_pictures.each do |private_picture| %>
+    <tr class="<%= cycle('odd', 'even') %>">
+      <td><%= link_to(image_tag(private_picture.location, :height => "30%"), private_picture.location) %></td>
+      <td class="actions">
+        <%= link_to('Delete', {:action => 'delete', :id => private_picture.id}, :class => 'action delete') %>
+      </td>
+    </tr>
+    <% end %>
+  </table>
+
+</div>

@@ -11,7 +11,15 @@ class PublicController < ApplicationController
     redirect_to(:action => 'index') unless @page
   end
 
-def setup_navigation
-  @subjects = Subject.visible.sorted
-end
+  def setup_navigation
+    @subjects = Subject.visible.sorted
+  end
+  
+  def gallery
+    @public_pictures = PublicPicture.where(:visible => true).all
+  end
+  
+  def about
+    
+  end
 end
